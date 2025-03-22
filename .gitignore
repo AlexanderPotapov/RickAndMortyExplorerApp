@@ -1,0 +1,40 @@
+# macOS системные файлы
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+
+# Xcode
+## User settings
+xcuserdata/
+
+# Xcode Derived Data
+DerivedData/
+
+# Obj-C/Swift specific
+*.hmap
+
+# App packaging
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.build/
+.swiftpm/ 
+
+# CocoaPods
+# Pods/
+# Podfile.lock
+
+# fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# Прочие файлы
+*.log
+*.tmp
+*.xccheckout
