@@ -124,8 +124,8 @@ class CharacterTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioni
         // Устанавливаем начальные позиции
         toVC.view.frame = finalToFrame
         
-        // Сбрасываем трансформации перед началом анимации
-        toVC.view.transform = .identity
+//        // Сбрасываем трансформации перед началом анимации
+//        toVC.view.transform = .identity
         
         // Применяем начальные трансформации для анимации
         toVC.view.alpha = 0.0
