@@ -7,8 +7,6 @@
 
 import UIKit
 
-// MARK: - Custom Transition Animation
-
 class CharacterTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     private let duration: TimeInterval = 0.4
     private let selectedCell: UITableViewCell?
@@ -20,7 +18,9 @@ class CharacterTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioni
         super.init()
     }
     
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+    func transitionDuration(
+        using transitionContext: UIViewControllerContextTransitioning?
+    ) -> TimeInterval {
         return duration
     }
     
@@ -32,7 +32,9 @@ class CharacterTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioni
         }
     }
     
-    private func animatePushTransition(using transitionContext: UIViewControllerContextTransitioning) {
+    private func animatePushTransition(
+        using transitionContext: UIViewControllerContextTransitioning
+    ) {
         guard let toVC = transitionContext.viewController(forKey: .to),
               let fromVC = transitionContext.viewController(forKey: .from) else {
             transitionContext.completeTransition(false)
@@ -44,11 +46,6 @@ class CharacterTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioni
         // добавляем toVC в контейнер
         containerView.addSubview(toVC.view)
         
-        // Получаем финальный фрейм из контекста перехода
-        let finalFrame = transitionContext.finalFrame(for: toVC)
-        
-        // Устанавливаем начальные позиции
-        toVC.view.frame = finalFrame
         
         // Создаем снимок ячейки для более плавного перехода
         let cellSnapshotView: UIView?
@@ -106,7 +103,9 @@ class CharacterTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioni
         )
     }
     
-    private func animatePopTransition(using transitionContext: UIViewControllerContextTransitioning) {
+    private func animatePopTransition(
+        using transitionContext: UIViewControllerContextTransitioning
+    ) {
         guard let toVC = transitionContext.viewController(forKey: .to),
               let fromVC = transitionContext.viewController(forKey: .from) else {
             transitionContext.completeTransition(false)
@@ -114,18 +113,10 @@ class CharacterTransitionAnimator: NSObject, UIViewControllerAnimatedTransitioni
         }
         
         let containerView = transitionContext.containerView
-        
-        // получаем правильные рамки из контекста перехода
-        let finalToFrame = transitionContext.finalFrame(for: toVC)
+
         
         // Добавляем toVC ниже текущего вида для анимации
         containerView.insertSubview(toVC.view, belowSubview: fromVC.view)
-        
-        // Устанавливаем начальные позиции
-        toVC.view.frame = finalToFrame
-        
-//        // Сбрасываем трансформации перед началом анимации
-//        toVC.view.transform = .identity
         
         // Применяем начальные трансформации для анимации
         toVC.view.alpha = 0.0
